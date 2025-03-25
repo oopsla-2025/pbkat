@@ -1,0 +1,344 @@
+name: bellkat
+
+default-extensions:
+  - DerivingStrategies
+  - TypeFamilies
+  - GeneralizedNewtypeDeriving
+  - FunctionalDependencies
+  - FlexibleInstances
+  - FlexibleContexts
+  - ScopedTypeVariables
+  - NoPolyKinds
+
+ghc-options:
+  - -Wall
+  - -Werror
+  - -fwarn-incomplete-uni-patterns
+  - -fwarn-missing-deriving-strategies
+
+dependencies:
+  - base
+  - containers
+  - more-containers
+  - diagrams-lib
+  - diagrams-cairo
+  - QuickCheck
+  - fixed-vector
+  - data-default
+  - these
+  - pointed
+  - base-orphans
+  - mtl
+  - smallcheck
+  - probability
+  - Boolean
+  - relude
+  - subcategories
+  - comfort-array
+  - comfort-glpk
+  - optparse-applicative
+  - aeson
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - BellKAT.Drawing
+    - BellKAT.Definitions
+    - BellKAT.PolicyEmbeddings
+    - BellKAT.ActionEmbeddings
+    - BellKAT.Definitions.Core
+    - BellKAT.Definitions.Tests
+    - BellKAT.Definitions.Atomic
+    - BellKAT.Definitions.Structures
+    - BellKAT.Definitions.Structures.Basic
+    - BellKAT.Definitions.Structures.Quantum
+    - BellKAT.Definitions.Policy
+    - BellKAT.Definitions.Policy.Extra
+    - BellKAT.Implementations.InterleavingOneStepHistoryQuantum
+    - BellKAT.Implementations.InterleavingOneStepHistoryQuantum.FunctionStep
+    - BellKAT.Implementations.InterleavingOneStepHistoryQuantum.FreeStep
+    - BellKAT.Implementations.TimelyHistoryQuantum
+    - BellKAT.Implementations.StepHistoryQuantum
+    - BellKAT.Implementations.HistoryQuantum
+    - BellKAT.Implementations.AutomataStepQuantum
+    - BellKAT.Implementations.GuardedAutomataStepQuantum
+    - BellKAT.Implementations.AtomicOneStepQuantum
+    - BellKAT.Implementations.ProbAtomicOneStepQuantum
+    - BellKAT.Utils.UnorderedTree
+    - BellKAT.Utils.Multiset
+    - BellKAT.Utils.NonEmpty
+    - BellKAT.Utils.Choice
+    - BellKAT.Utils.PartialNDEndo
+    - BellKAT.Utils.Distribution
+    - BellKAT.Utils.Convex
+    - BellKAT.Utils.Convex.DConvexHull
+    - BellKAT.Utils.Automata
+    - BellKAT.Utils.Automata.NFA
+    - BellKAT.Utils.Automata.EpsNFA
+    - BellKAT.Utils.Automata.Eps
+    - BellKAT.Utils.Automata.Transitions
+    - BellKAT.Utils.Automata.Transitions.Core
+    - BellKAT.Utils.Automata.Transitions.Guarded
+    - BellKAT.Utils.Automata.Transitions.Functorial
+    - BellKAT.Utils.Automata.Execution.Set
+    - BellKAT.Utils.Automata.Execution.Common
+    - BellKAT.Utils.Automata.Execution.Guarded
+    - BellKAT.Utils.Automata.Execution.Guarded.State
+    - BellKAT.Utils.Automata.Guarded
+    - BellKAT.Utils.Automata.HyperAction
+    - BellKAT.Utils.Automata.GuardedEps
+    - BellKAT.DSL
+    - BellKAT.Test
+    - BellKAT.Test.QuickCheck
+    - BellKAT.Prelude
+    - BellKAT.ProbabilisticPrelude
+
+executables:
+  p1:
+    dependencies: 
+      - bellkat
+    main: examples/P1.hs
+  p2:
+    dependencies: 
+      - bellkat
+    main: examples/P2.hs
+  p1text:
+    dependencies: 
+      - bellkat
+    main: examples/P1Text.hs
+  p2text:
+    dependencies: 
+      - bellkat
+    main: examples/P2Text.hs
+  p3:
+    dependencies: 
+      - hspec
+      - bellkat
+    main: examples/P3.hs
+  Pa:
+    dependencies: 
+      - bellkat
+    main: examples/Pa.hs
+    ghc-options:
+      - -rtsopts
+  P5_1_II_parallel:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_II_parallel.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  P5_1_II_parallel_three:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_II_parallel_three.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  P5_1_II_ordered_three:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_II_ordered_three.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  P5_1_II_ordered:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_II_ordered.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  P5_1_I_ordered:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_I_ordered.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  P5_1_I_parallel:
+    dependencies: 
+      - bellkat
+    main: examples/P5_1_I_parallel.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP4:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P4.hs
+    ghc-options:
+      - -fprof-auto
+      - -rtsopts
+  probPa1:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/Pa1.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probPa:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/Pa.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probPag:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/Pag.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_II_parallel:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_II_parallel.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_II_parallel_three:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_II_parallel_three.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_II_ordered_three:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_II_ordered_three.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_II_ordered:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_II_ordered.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_I_ordered:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_I_ordered.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_I_parallel:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_I_parallel.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_III_one:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_III_one.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_III_two:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_III_two.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_1_IV:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_1_IV.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_3_pompili:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_3_pompili.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_3_coopmans_inner:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_3_coopmans_inner.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_3_coopmans_outer:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_3_coopmans_outer.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+  probP5_3_coopmans_mixed:
+    dependencies: 
+      - bellkat
+    main: probabilistic-examples/P5_3_coopmans_mixed.hs
+    default-extensions:
+      - OverloadedStrings
+      - OverloadedLists
+    ghc-options:
+      - -rtsopts
+
+tests:
+  spec: 
+    main: Spec
+    source-dirs: 
+      - test/main
+      - src
+    dependencies: 
+      - hspec
+  small:
+    source-dirs:
+      - test/small
+      - src
+    dependencies: 
+      - hspec
+    main: SpecSmall
